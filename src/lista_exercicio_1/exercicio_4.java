@@ -13,37 +13,36 @@ public class exercicio_4 {
 		int total_descoberto = 0;
 		int total_roubado;
 		int cont = 0;
-		
-	    ArrayList<Integer > valor_investigado = new ArrayList<Integer >(); 
-	    for(int i = 1 ; i <= 10 ; i++) {
-	    	System.out.printf("Valor R$ °"+i+" suspeito: ");
-			valor = ler.nextInt();
-			valor_investigado.add(valor);
-	    }
-	    
+
+		// Valor de cada suspeito
+		int[] valor_investigado = new int[10];
+		for (int i = 0; i < valor_investigado.length; i++) {
+			System.out.printf("Valor R$ °" + (i + 1) + " suspeito: ");
+			valor_investigado[i] = ler.nextInt();
+		}
+
 		System.out.print("Valor roubado pelo ladrão que menos roubou: ");
 		int valor_confessado = ler.nextInt();
-	      
-	     for(int e:valor_investigado) {
-	    	  if (valor_confessado == e) 
-	    		cont++;
-	        
-	       } 
 
-	     for(int d:valor_investigado) {
-	    	  if ((d % 10 == 0) && (d > valor_confessado)  )
-	    		total_descoberto = total_descoberto + d;
-	        
-	       } 
-	     
-	     if (cont > 1) {
-	    	 
-	    	 total_roubado = (total_descoberto + (valor_confessado * cont));
-	    	 System.out.println("Total roubado : " + total_roubado);
-	     }else {
-	    	 total_roubado = total_descoberto + valor_confessado;
-	    	 System.out.println("Total roubado : " + total_roubado);
-	     }
+		for (int i = 0; i < valor_investigado.length; i++) {
+			if (valor_confessado == valor_investigado[i]) {
+				cont++;
+			}
+		}
+
+		for (int i = 0; i < valor_investigado.length; i++) {
+			if ((valor_investigado[i] % 10 == 0) && (valor_investigado[i] > valor_confessado)) {
+				total_descoberto = total_descoberto + valor_investigado[i];
+			}
+		}
+
+		if (cont > 1) {
+			total_roubado = (total_descoberto + (valor_confessado * cont));
+			System.out.println("Total roubado : " + total_roubado);
+		} else {
+			total_roubado = total_descoberto + valor_confessado;
+			System.out.println("Total roubado : " + total_roubado);
+		}
 
 	}
 
