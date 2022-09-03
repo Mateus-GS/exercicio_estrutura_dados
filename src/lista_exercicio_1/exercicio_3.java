@@ -9,30 +9,33 @@ public class exercicio_3 {
 		// Nome: Vinícius Gonçalves de Souza | RA: 119122170
 		
 		Scanner ler = new Scanner(System.in);
-		String carros;
-		int conb;
-		int idx_menor_comb;
+		String[] cars = new String[4];
+		int[] consumo = new int[4];
 		
-	    ArrayList<String> cars = new ArrayList<String>(); 
-	    for(int i = 0 ; i <= 4 ; i++) {
-			System.out.printf("Informe um modelo de carro: ");
-			carros = ler.next();
-			cars.add(carros);
+		// Lendo nome dos carros e consumos
+		System.out.println("===== Modelo e consumo dos carros ====== ");
+	    for(int i = 0 ; i < 4 ; i++) {
+			System.out.printf("Modelo de carro: ");
+			cars[i] = ler.next();
+			System.out.printf("Consulmo do " + cars[i] + ": ");
+			consumo[i] = ler.nextInt();
 	    }
 	    
-	    ArrayList<Integer > conbustivel = new ArrayList<Integer >(); 
-	    for(int i = 0 ; i <= 4 ; i++) {
-			System.out.printf("Informe um consumo: ");
-			conb = ler.nextInt();
-			conbustivel.add(conb);
-	    }
-	    
-        idx_menor_comb = conbustivel.indexOf(Collections.min(conbustivel));
-        System.out.println("O Carro que faz o menor consumo é : " + cars.get(idx_menor_comb));
-        
-        for(int d:conbustivel) {
-        	System.out.println("O consumo dos carros por 1000Km é : " + 1000/d );
-        }
+	    // Modelo de carro mais econômico
+	    System.out.println("===== Carro mais econômico ====== ");
+	    int [] consumoColne = consumo.clone();
+	    Arrays.sort(consumoColne);
+	    for (int i = 0 ; i < consumo.length ; i++) {
+	    	if (consumoColne[0] == consumo[i]) {
+				System.out.println("O carro com o menor consumo é o " + cars[i]);
+			}
+		}
+
+	    // Mostrando consumo do carro por KM
+	    System.out.println("===== Consumo por KM dos carros ====== ");
+	    for (int i = 0 ; i < cars.length ; i++) {
+	    	System.out.println("O consumo do "+ cars[i] +" por 1000Km é : " + 1000/consumo[i] );
+		}
 	}
 
 }
