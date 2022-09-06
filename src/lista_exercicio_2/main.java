@@ -4,25 +4,23 @@ import java.util.*;
 public class main {
 
 	public static void main(String[] args) {
-//		conta Vinicius = new conta(1000, 50, 1400, "Vinicius", "000.000.000-00" );
-//		conta Mateus = new conta(1000, 20, 1400, "Mateus", "000.000.000-00" );
-//		
-//		Vinicius.Transferir(Mateus, 100);
-//		Mateus.ExibirSaldo();
-//		Vinicius.ExibirSaldo();
+		
+		// Nome: Mateus Goncalves de Souza | RA: 119122458
+		// Nome: Vinicius Goncalves de Souza | RA: 119122170
+		
 		double saldoInicial;
-		int numConta;
-		int agenciaConta;
-		String nomeConta;
-		String cpfConta;
-		int posicao = 1;
+		int numConta, agenciaConta, qts;
+		String nomeConta, cpfConta;
 		
 		Scanner ler = new Scanner(System.in);
-		conta[] contas;
 		
-		contas = new conta [5];
+		System.out.printf("Quantas contas deseja criar: ");
+		qts = ler.nextInt();
+		
+		conta[] contas = new conta[qts];
+		
 		for (int i = 0; i < contas.length; i++) {
-			
+			System.out.println("======= Criando nova conta ==========");
 			System.out.printf("Saldo Inicial: ");
 			saldoInicial = ler.nextDouble();
 			System.out.printf("Numero conta: ");
@@ -34,9 +32,13 @@ public class main {
 			System.out.printf("CPF: ");
 			cpfConta = ler.next();
 			
-			//conta novaconta[i] = new conta(saldoInicial, numConta, agenciaConta, nomeConta, cpfConta );
+			contas[i] = new conta(saldoInicial, numConta, agenciaConta, nomeConta, cpfConta );
 			
-		}	
+		}
+		
+		contas[0].Transferir(contas[1], 100);
+		contas[1].ExibirSaldo();
+		contas[0].ExibirSaldo();
 			
 		
 	}
