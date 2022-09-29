@@ -2,44 +2,46 @@ package lista_exercicio_3;
 
 public class Agenda {
     // Atributos
-    private double[] itens;
+    private String[] agendas;
+    private String nome;
+    private String telefone;
+    
     private int topo;
     private int tam_max;
-
-	public void setTam_max(int tam_max) {
-		this.tam_max = tam_max;
-	}
-	
-	public Agenda(int n)  {
-		itens = new double[n];
-        tam_max = n;
-        topo = 0;
+    
+    // Construtor
+    public Agenda(int quantidade) {
+    	agendas = new String[quantidade];
+    	tam_max = quantidade;
+    	topo = 0;
     }
-
-    public void push(double valor) {
-        itens[topo] = valor;
-        topo++;
+    
+    public void adicionar(String nome, String telefone) {
+    	agendas[topo] = nome + telefone;
+//    	agendas[topo] = telefone;
+//    	System.out.println(agendas[topo]);
+    	topo++;
     }
-
-    public void pop() {
-        topo--;
+    
+    public void remover() {
+    	topo--;
     }
-
-    public double top() {
-        return itens[topo - 1];
+    
+    public String top() {
+    	return agendas[topo -1];
     }
-
-    public boolean empty() {
+    
+    public boolean vazio() {
         return (topo == 0);
     }
 
-    public boolean full() {
+    public boolean cheio() {
         return (topo == tam_max);
     }
 
-    public int size() {
+    public int tamanho() {
         return topo;
     }
 
-
+    
 }
